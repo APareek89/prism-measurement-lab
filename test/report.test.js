@@ -23,3 +23,12 @@ test('builds a report with an auditable evidence summary', () => {
   });
 });
 
+test('does not claim an unsupported metric contributed evidence', () => {
+  const report = buildHealthReport({
+    metrics: { delivery: 75, queueLatency: 99 },
+    riskEvidence: { severity: 'low', occurrences: 0, hasMitigation: false },
+    measuredAt: '2026-07-18T11:00:00.000Z',
+  });
+
+  assert.deepEqual(report.evidence.availableMetrics, ['delivery']);
+});
