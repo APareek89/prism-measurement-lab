@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "bin": {
+    "health-report": "bin/health-report.js"
+  },
   "scripts": {
+    "report": "node bin/health-report.js",
     "test": "node --test"
   },
   "engines": {
     "node": ">=20"
   }
 }
-
