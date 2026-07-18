@@ -33,3 +33,28 @@ export function compareHealthReports(current, previous) {
     summary: `Health ${direction} by ${Math.abs(scoreDelta)} points.`,
   };
 }
+
+function formatEvidenceSources(sources) {
+  return sources.length > 0 ? sources.join(', ') : 'none';
+}
+
+/** Render a health-report comparison as a concise Markdown summary. */
+export function formatTrendMarkdown(comparison) {
+  const lines = [
+    '### Health trend',
+    '',
+    `- Direction: ${comparison.direction}`,
+  ];
+
+  if (Number.isFinite(comparison.scoreDelta)) {
+    const sign = comparison.scoreDelta > 0 ? '+' : '';
+    lines.push(`- Score delta: ${sign}${comparison.scoreDelta} points`);
+  }
+
+  lines.push(
+    `- Evidence added: ${formatEvidenceSources(comparison.evidenceChange.added)}`,
+    `- Evidence removed: ${formatEvidenceSources(comparison.evidenceChange.removed)}`,
+  );
+
+  return lines.join('\n');
+}

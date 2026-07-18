@@ -14,6 +14,27 @@ metric is removed from both numerator and denominator instead of silently voting
 `compareHealthReports` reports score movement together with evidence sources added or removed.
 If either score is missing, it returns `insufficient` instead of inventing a trend.
 
+`formatTrendMarkdown` renders that comparison for a pull request, issue, or status update:
+
+```js
+import { compareHealthReports, formatTrendMarkdown } from './src/trend.js';
+
+const comparison = compareHealthReports(currentReport, previousReport);
+const markdown = formatTrendMarkdown(comparison);
+```
+
+```md
+### Health trend
+
+- Direction: improved
+- Score delta: +6.5 points
+- Evidence added: collaboration
+- Evidence removed: quality
+```
+
+When a comparison has no score delta, the renderer omits that line and still reports evidence
+changes, using `none` when no sources were added or removed.
+
 ## Run
 
 ```sh
