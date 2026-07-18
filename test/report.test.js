@@ -15,6 +15,16 @@ test('builds a report with an auditable evidence summary', () => {
     band: 'healthy',
     risk: 'observed',
     nextAction: 'Monitor the next delivery and confirm the mitigation is working.',
+    calculation: {
+      availableWeight: 1,
+      terms: [
+        { metric: 'delivery', raw: 90, configuredWeight: 0.45, effectiveWeight: 0.45, contribution: 40.5 },
+        { metric: 'quality', raw: 70, configuredWeight: 0.35, effectiveWeight: 0.35, contribution: 24.5 },
+        { metric: 'collaboration', raw: 80, configuredWeight: 0.2, effectiveWeight: 0.2, contribution: 16 },
+      ],
+      score: 81,
+      equation: '(90 × 0.45 + 70 × 0.35 + 80 × 0.2) ÷ 1 = 81',
+    },
     evidence: {
       availableMetrics: ['delivery', 'quality', 'collaboration'],
       occurrences: 2,

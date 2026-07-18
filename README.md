@@ -7,6 +7,10 @@ commits, delivery outcomes, AI co-author evidence, and later coding-agent sessio
 The lab itself produces a delivery-health report from explicit inputs. It has no seeded users,
 generated activity, or synthetic Prism database rows.
 
+Every report includes a calculation ledger: the supported raw metrics, configured and
+renormalized weights, per-metric contribution, and the exact weighted-mean equation. A missing
+metric is removed from both numerator and denominator instead of silently voting as zero.
+
 ## Run
 
 ```sh
@@ -19,4 +23,3 @@ npm test
 - AI-assisted commits carry a `Co-authored-by` trailer.
 - Tests describe the behavior expected from each change.
 - Prism ingests the resulting GitHub records through the installed GitHub App.
-
