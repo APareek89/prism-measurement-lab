@@ -11,6 +11,9 @@ Every report includes a calculation ledger: the supported raw metrics, configure
 renormalized weights, per-metric contribution, and the exact weighted-mean equation. A missing
 metric is removed from both numerator and denominator instead of silently voting as zero.
 
+`compareHealthReports` reports score movement together with evidence sources added or removed.
+If either score is missing, it returns `insufficient` instead of inventing a trend.
+
 ## Run
 
 ```sh
