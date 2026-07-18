@@ -35,6 +35,21 @@ const markdown = formatTrendMarkdown(comparison);
 When a comparison has no score delta, the renderer omits that line and still reports evidence
 changes, using `none` when no sources were added or removed.
 
+`summarizeEvidenceCoverage` checks the three supported metrics against both the report's declared
+evidence sources and its calculation terms:
+
+```js
+import { summarizeEvidenceCoverage } from './src/report.js';
+
+const coverage = summarizeEvidenceCoverage(report);
+// { available: 2, insufficient: 0, missing: 1, readiness: 'partial' }
+```
+
+A metric is `available` when its evidence source and a finite calculation term are both present,
+`insufficient` when only one is present, and `missing` when neither is present. Readiness is
+`ready` when all three metrics are available, `empty` when the report has no supported evidence,
+and `partial` otherwise.
+
 ## Run
 
 ```sh
