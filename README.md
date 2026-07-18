@@ -1,0 +1,22 @@
+# Prism Measurement Lab
+
+A small, real repository used to observe how normal engineering work becomes Prism evidence.
+The project will grow through reviewable pull requests so the Admin calculation trace can show
+commits, delivery outcomes, AI co-author evidence, and later coding-agent session links.
+
+The lab itself produces a delivery-health report from explicit inputs. It has no seeded users,
+generated activity, or synthetic Prism database rows.
+
+## Run
+
+```sh
+npm test
+```
+
+## Measurement rules
+
+- Work lands through pull requests.
+- AI-assisted commits carry a `Co-authored-by` trailer.
+- Tests describe the behavior expected from each change.
+- Prism ingests the resulting GitHub records through the installed GitHub App.
+
